@@ -1,0 +1,84 @@
+<html lang="eng">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GTAAaS 2.0</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+  <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
+  <link rel="stylesheet" type="text/css" href="css/loading-bar.min.css">
+
+  <!-- CSS -->
+  <link rel="stylesheet" type="text/css" href="css/index.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/responsive.css" rel="stylesheet">
+  <link rel='stylesheet' type='text/css' href='https://fonts.googleapis.com/css?family=Open+Sans:300'>
+</head>
+<body>
+  <header>
+    <nav id="navbar" class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"><img src="img/gtad.png" class="img-responsive"/></a>
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Menu</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right text-right">
+            <li><a href="">Contribua</a></li>
+            <li><a href="">Mais projetos</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <div class="pageCenter col-sm-12">
+      <p style="font-size: 3vmin; margin-top: 20%; margin-left: 20%; align: center; width: 60%; text-align: center; color: white; border: 1px; border-color: black; opacity: 0.9;">O GTAAaS é uma plataforma colaborativa para construção de lorem impsum através de sua contribuição!</p>
+      <!-- <svg style="margin-left: 38%; margin-top: 4%;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="xMidYMid" width="273" height="123" viewBox="0 0 273 123">
+        <image xlink:href="data:img/png;base64,iVBORw0KGgoAAAANSUhEUgAAAREAAAB7CAMAAABkUkQ0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAATlBMVEUAAAD////////////////////q6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6urq6ur////////////////q6uoAAAA6Ru0XAAAAF3RSTlMAx4jAh3hEd7tmMxEimczuiN2qVb93txAg+nwAAAABYktHRACIBR1IAAAACXBIWXMAAAsSAAALEgHS3X78AAAHbklEQVR42u2c65arKBCFnRsXQRSdmeP7P+lUFQhY8WR1+sSsmKn9oxsj1y/c3CTpfoj26n789ruo6g8g8mcnqvpLiDAJES4hwiVEuIQIlxDhEiJcQoRLiHAJES4hwiVEuIQIlxDhEiJcQoRLiHAJEa7TiShtjNFaPZTIGtN33bqazyPizJp1L5bX2u9e0OuqPpTIACwCdJJwl4giAP8LIm5dxy+MlxsiSZ9IxK7r1F73SjXDw21XeyLONUS8OiYKaZXrztC5RPSuqTbihBL61NqAI2qdKUzSFH0xkGQbNSOlmFICjf8MzUh5dprPYHIuEah5rbTNLR99pUDtbIkggkqkxtkTaW9cjki9GGlOgcYO1KZofbeMa8AFGtqGI0hTH9K+EImLR5AjJ0IDxsc1XpqIym2acwNp1hxSA/PgAhCTzwHVxukZkQPeFySia7N9aa2mYdUQUU3cGkfdEIGZFaelTyHCW3ufiLolssQv7Pvekkjq8E8nAq+M8GRwxT4CLVsOiPiHiGwXUyGSQV9xHumbbacq73Izs36FyEwIx3RBFDKKKxLpoGPPysHG096svnsiE0yWt0SCg6fAlRZZg93Np9k09REf2t3OVYgsZZfVpd1G3aE1RFyzZ90RycKRZ5ucgOCa5tYTNiRn+yMqrKXqemx38Q2R1NzpJ0Rimoom2ren2ZTCcQpnDJvzPTR8JtsWnP2T3j5Sf5y0Ps+5fRgz8o8ZUW9C5GoSIlxChEuIcAkRLiHCJUS4hAiXEOESIlxChEuIcAkRLiHCJUS4hAiXEOE6gUg/PzM3fcZp9z19k8jmItuDe/4X27D3HZflm9m8msiJ75w5wTx9QEKE65eJaA/nrzMY6UO6nhyNGjfFcc79Pw8jiOAXOK0IS+eGcRw2Y1330whHFfDhoqgd/BuDWWoGOGr2MbL8PMapXFEl2oK9hqLUrh4vImLwEzBLdN1MA74PnYLKuwBVtzF/zCyddOLRU4DTmj5YYzunt/NPQ820cMfrAOcOQcMpRMkAS9rHSOrhGMeVq2GASpjYFKxiUKwe5xIZ8CgFz0wMrSyT7iwFBk0AJp1icSJ4ggunwXQ35BMag7F8dDmfNGpKBkSExaDUNLaMzXjo79qkS0Xt6nEukWhQWFvqGhZCI9YY/iAACm8oGiI55Nu2UQ75wsdMpGSg9W2Mjvoi1UO3/9YmnaIIu3qcS6SOGrWViVW2A4X9SsDCz4js8qActul0TcGagda3MfAtGClCTHnMKt+q6aiofT1eTqTP7y+9QWobVd8jUjP4CZE8bPO5p9mI1HRU1L4eLycCQ5u6NITd2Eb+CpF52RGpGRQiTQzQstsYDzbfqumoqH09Xk/EDjTWMRzac+089O8SsUNpKF2XDAqRJsZNW/O9tUmXigoH5+svJOIiLXMYXgJ25+28P2IcfZdIFyzl0OfOUDIoRJoYqIkg2DRqHBVs1yZdKmpfj1OJpLUGFoGGSDfMJWzjpEPIG6g+DjoM5i4RF2Y9RGy0inqpGVQiNQZpCHqK27LaY+x5bQrORe3qcSYRp7aJbduX0quuhr3V9Z1xeOG2W/nv9o2AbdpTOr/jPaXMGWCsmxg5WvOtHCphbQveKtbW40Qibyn/lM9gfQgRXF/d/JTHzw8hgp9hHJ/zPP4hRJ4oIcIlRLheSwQ3F/PBYviVReLA0H7ICXpfIvqgHV/5oO7e0B5iVN95anlHIkd6/KPLsevNaB9O9sFEztMpRBz4wIGe1+gJnvp7P4NtXEZNNZHJMkYixSOGmCNNNpgNekHJRKZcPFrWPgXWNCP1c37pnYkYaHWPFmjqE8lOgu+C6DE/tlUTOVnGa+MRe/TqySzGbBa4SiYyGdrROrqHAbjXZwf6MW/59USSB4pPGZXITGN+TkSqiXxgGac0aGXTg60P2UTGXJIzZOFbFhMFIEZyB5bnfZ/+lD6S3rC1JVINACBSTeQDyzh5+vDIm63CmE3kmgusw26LvXlpz+sk58ys8KCudUuksc6hodUyzVZhaxnDwpp+rSRuT/7J6kBDO9QiFihhMMxkeVsiQ+REsn9zQ+TAMsaZdMZvGZUFqBCppwwumCsR0XNuZiWSrYtMpJrIB5YxycNcatLm1lciXY7ku3nLOE0o704k1c6vmyOMbUnjPBOpJvKBZay3mIVWJZJygVA+tCmon7h9PYMITZwOf5bG03xpoC30XsIKm3gVE/nAMh7SrwtY6Cf4Ch5YFiJpHoV7dMbZ4/F4cqCfYxadRsSFAS1ipAHG7xQttmgw8NqQiVQTmSxjgzPm5hE7OFvXZClbNKyNa4h0E+Y3pWRztLSjQQd6el7tz1lrFr1kT5p+tIkWjR5t42IjFxO5mNLVI4aVqq/3up1f7cPY51sqv9Rr/cyH4Mv5I34Kv57JPV2OCMwe5+Z/NSJujI8fXD6kqxE5X0KES4hwCREuIcIlRLiECJcQ4RIiXEKES4hwCREuIcIlRLiECJcQ4RIiXEKES4hwCREuIcIlRLiECJcQ4RIiXEKEC4n8/Y+o6l8gItrrP2fi4EnwFl/iAAAAAElFTkSuQmCC" width="273" height="123"/>
+      </svg> -->
+      <div class="pageButton">
+        <button id="btnRedirect" class="button"><strong>Contribua</strong><br><br>Envie um roteiro e gere <br>audiodescrição</button>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="content">
+            <div class="col-sm-4">
+              <ul style="list-style-type:none; font-size: 2vmin;">
+                <li>Página inicial</li>
+                <li>Seleção de roteiros</li>
+              </ul>
+            </div>
+            <div class="col-sm-4">
+              <p style="font-size: 2vmin;">Lorem ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI.</p>
+            </div>
+            <div class="col-sm-4">
+              <div class="imgsContent">
+                <img class="imgs" class="img-responsive" src="img/logornp.png">
+                <img class="imgs" class="img-responsive" src="img/logolavid.png">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="bower_components/bootstrap/dist/js/loading-bar.min.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>

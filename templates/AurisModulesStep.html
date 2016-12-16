@@ -1,0 +1,36 @@
+<div class="container" ng-controller="requestsCtrl">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="headerSteps" style=" margin-top: 3%;">
+        <img ng-repeat="i in getArray(qtSteps) track by $index" ng-class="{ 'disactive': (actualStep <= $index) }" ng-src="img/Elipse{{$index+1}}.png">
+        <img src="img/Elipse4.png">
+      </div>
+        <br>
+        <p style="font-size: 2.5vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;">Você enviou o arquivo: {{fileName}}</p>
+      </div>
+  </div>
+  <div class="row">
+    <div style="margin-top: 10%; margin-left: 10%">
+      <div class="col-xs-offset-2 col-xs-10 col-sm-offset-2 col-sm-3 left" style="padding-top: 10px;">
+        <i class="fa fa-file-o fa-5x" aria-hidden="true"></i>
+        <div style="margin-top: 10%; margin-left: -25%;">
+          <button class="btn btn-md" style="width: 240px; color: white; background-color: #1CBBB4;" ng-click="generateMidi_melody()">Gerar Midi-Melody</button>
+        </div>
+      </div>
+      <div class="col-xs-offset-2 col-xs-10 col-sm-offset-1 col-sm-3" style="padding-top: 10px;">
+        <i class="fa fa-file-text-o fa-5x" aria-hidden="true"></i>
+        <div style="margin-top: 10%; margin-left: -25%;">
+          <button class="btn btn-md" style="width: 240px; color: white; background-color: #1CBBB4;" ng-click="generateAuris_file()" ng-disabled="disableButton">Gerar Auris-File</button>
+          <br><br>
+          <a href="{{download_route}}" style="font-size: 1.7vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;">Download Auris-Stream file</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-offset-6 col-xs-12" style="margin-top: 8%;">
+      <button class="btn btn-lg" style="width: 150px; color: white; background-color: #1CBBB4;" ng-click="ipConfigStep()" ng-disabled="disableButton2">Proximo passo<br>(Com Arduino)</button>
+      <button class="btn btn-lg" style="width: 150px; color: white; background-color: #1CBBB4;" ng-click="audioStep()" ng-disabled="disableButton2">Proximo passo<br>(Sem Arduino)</button>
+    </div>
+  </div>
+</div>

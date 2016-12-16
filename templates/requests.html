@@ -1,0 +1,29 @@
+<div class="container" ng-controller="listRequestsCtrl">
+  <div class="row">
+    <div class="col-xs-4" ng-repeat="request in requestsList">
+      <video ng-show="isCompleted(request)" ng-src="{{getVideoURL(request)}}" style="margin:auto; padding-left:20px; padding-top: 30px;" width="300" webkit-playsinline="" controls>
+        Navegador sem suporte a HTML5.
+      </video>
+    </div>
+    <div class="col-xs-12">
+      <div class="col-xs-push-4 col-xs-4">
+        <div class="table-responsive">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-class="request.status === 'done' ? 'success' : (request.status === 'error' ? 'danger' : 'info')" ng-repeat="request in requestsList">
+                <td>{{request.originalName}}</td>
+                <td>{{request.status}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
