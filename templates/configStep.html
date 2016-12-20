@@ -1,0 +1,29 @@
+<div class="container" ng-controller="requestsCtrl">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="headerSteps" style=" margin-top: 3%;">
+        <img ng-repeat="i in getArray(qtSteps) track by $index" ng-class="{ 'disactive': (actualStep <= $index) }" ng-src="img/Elipse{{$index+1}}.png">
+        <img src="img/Elipse4.png">
+      </div>
+        <br>
+        <p style="font-size: 2.5vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;">Clique no botão "Enviar Arquivo" para enviar um arquivo de configuração para o Auris Player.</p>
+      </div>
+  </div>
+  <form  enctype="multipart/form-data" ng-submit="submitGuideDetailsForm_CFG()">
+  <div class="row">
+      <div class="col-xs-offset-6 col-xs-12">
+        <div style="margin-top: 5%; margin-left: -25%;">
+          <p style="font-size: 2.5vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;">Arquivo: {{actualFile}}</p>
+          <span class="btn btn-lg btn-file" style="width: 150px; color: white; background-color: #1CBBB4;">
+              Enviar arquivo <input type='file' name='file' ng-required="false" onchange="angular.element(this).scope().uploadFiles(this.files)">
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-offset-7 col-xs-12" style="margin-top: 8%;">
+          <button class="btn btn-lg" style="width: 150px; color: white; background-color: #1CBBB4;">Proximo passo</button>
+        </div>
+      </div>
+    </div>
+    </form>
+</div>

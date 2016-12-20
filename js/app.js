@@ -22,8 +22,12 @@ angular.module('gtAD', ['ui.router', 'ui.bootstrap', 'toastr', 'angular-loading-
     templateUrl: 'templates/arduinoConfigStep.html'
   })
   .state('musicStep', {
-    url: '/musicReq',
+    url: '/music_req',
     templateUrl: 'templates/noArduinoStep.html'
+  })
+  .state('setupStep', {
+    url: '/configuration_step',
+    templateUrl: 'templates/configStep.html'
   });
 
   $urlRouterProvider.otherwise('/home');

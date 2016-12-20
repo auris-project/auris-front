@@ -18,19 +18,29 @@ angular.module("gtAD")
   };
 
   $scope.uploadFiles = function(files) {
-    $scope.$apply(function () {
-      $scope.file = new FormData();
-      $scope.file.append("file", files[0]);
-      if ($scope.fileSubmitted) $rootScope.files.pop();
-      $scope.actualFile = files[0].name;
-      var archiveName = files[0].name;
-      var n = archiveName.indexOf('.');
-      var res = archiveName.substring(0,n);
-      $rootScope.fileName = res;
-      $rootScope.files = ($rootScope.files === undefined ) ? [] : $rootScope.files;
-      $rootScope.files.push(files[0]);
-      $scope.fileSubmitted = true;
-    });
+    if ($rootScope.actualStep == 1) {
+      $scope.$apply(function () {
+        $scope.file = new FormData();
+        $scope.file.append("file", files[0]);
+        if ($scope.fileSubmitted) $rootScope.files.pop();
+        $scope.actualFile = files[0].name;
+        var archiveName = files[0].name;
+        var n = archiveName.indexOf('.');
+        var res = archiveName.substring(0,n);
+        $rootScope.fileName = res;
+        $rootScope.files = ($rootScope.files === undefined ) ? [] : $rootScope.files;
+        $rootScope.files.push(files[0]);
+        $scope.fileSubmitted = true;
+      });
+    }
+    else{
+      $scope.$apply(function () {
+        $scope.file = new FormData();
+        $scope.file.append("file", files[0]);
+        $scope.actualFile = files[0].name;
+        $scope.fileSubmitted = true;
+      });
+    }
   };
 
   $scope.submitGuideDetailsForm = function() {
@@ -49,12 +59,23 @@ angular.module("gtAD")
         $rootScope.stream_route = path4;
         $rootScope.actualStep = 2;
         $rootScope.qtSteps = 3;
-        $state.go('generateStep');
+        $state.go('setupStep');
       }).error(function(error){
         $log.log('error load file!!!!!');
         $log.log(error);
       });
     }
+  };
+
+  $scope.submitGuideDetailsForm_CFG = function() {
+    $http.post('/upload_file', $scope.file, {
+      headers: {'Content-Type': undefined },
+      transformRequest: angular.identity
+    }).success(function(results){
+      $state.go('generateStep');
+    }).error(function(error){
+      $state.go('generateStep');
+    });
   };
 
   $scope.generateMidi_melody = function(){
