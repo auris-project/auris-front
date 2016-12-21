@@ -9,6 +9,8 @@ angular.module("gtAD")
 
   $scope.ip_value = "";
   $scope.port_value = 0;
+  $scope.freq_corte = 0;
+  $scope.ganho = 0;
 
   $scope.initAdScript = function() {
     $rootScope.requisitionType = 2;
@@ -53,10 +55,12 @@ angular.module("gtAD")
         var path2 = '/api/generate-auris/' + $rootScope.fileName;
         var path3 = '/api/download-auris/' + $rootScope.fileName;
         var path4 = '/api/play-music/' + $rootScope.fileName;
+        var path5 = '/api/download-audio-filtered/' + $rootScope.fileName;
         $rootScope.midi_route = path;
         $rootScope.auris_route = path2;
         $rootScope.download_route = path3;
         $rootScope.stream_route = path4;
+        $rootScope.audioDownload_route = path5;
         $rootScope.actualStep = 2;
         $rootScope.qtSteps = 3;
         $state.go('setupStep');
@@ -90,6 +94,11 @@ angular.module("gtAD")
     });
   };
 
+  $scope.generateAudio = function(){
+    $rootScope.actualStep = 3;
+    $state.go('generateAudio');
+  }
+
   $scope.ipConfigStep = function(){
     $rootScope.actualStep = 3;
     $state.go('ipConfigStep');
@@ -105,6 +114,14 @@ angular.module("gtAD")
     $rootScope.arduino_route = path3;
     $http.get($rootScope.arduino_route).success(function(results){
       $scope.disableButton = false;
+    });
+  };
+
+  $scope.sendAurisFiltered = function(){
+    var path3 = '/api/audio-generate/' + $rootScope.fileName + "/" + $scope.freq_corte + "/" + $scope.ganho;
+    $rootScope.ganerateAudio_route = path3;
+    $http.get($rootScope.ganerateAudio_route).success(function(results){
+      $scope.disableButton2 = false;
     });
   };
 

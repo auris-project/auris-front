@@ -28,6 +28,10 @@ angular.module('gtAD', ['ui.router', 'ui.bootstrap', 'toastr', 'angular-loading-
   .state('setupStep', {
     url: '/configuration_step',
     templateUrl: 'templates/configStep.html'
+  })
+  .state('generateAudio', {
+    url: '/filteredaudio_step',
+    templateUrl: 'templates/generateAudioStep.html'
   });
 
   $urlRouterProvider.otherwise('/home');
@@ -58,5 +62,7 @@ angular.module('gtAD', ['ui.router', 'ui.bootstrap', 'toastr', 'angular-loading-
       $rootScope.stream_route = '';
       $rootScope.arduinoStart_route = '';
       $rootScope.arduinoStop_route = '';
+      $rootScope.ganerateAudio_route = '';
+      $rootScope.audioDownload_route = '';
   });
 });
