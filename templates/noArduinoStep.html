@@ -1,0 +1,17 @@
+<div class="container" ng-controller="requestsCtrl">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="headerSteps" style=" margin-top: 3%;">
+        <img ng-repeat="i in getArray(qtSteps) track by $index" ng-class="{ 'disactive': (actualStep <= $index) }" ng-src="img/Elipse{{$index+1}}.png">
+        <img src="img/Elipse4.png">
+      </div>
+        <br>
+        <p style="font-size: 2.5vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;">Tocar arquivo: {{fileName}}</p>
+      </div>
+  </div>
+  <div class="row">
+    <audio controls>
+      <source src="{{stream_route}}" type="audio/mp3">
+    </audio>
+  </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container" ng-controller="requestsCtrl">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="headerSteps" style=" margin-top: 3%;">
+        <img ng-repeat="i in getArray(qtSteps) track by $index" ng-class="{ 'disactive': (actualStep <= $index) }" ng-src="img/Elipse{{$index+1}}.png">
+        <img src="img/Elipse4.png">
+      </div>
+        <br>
+        <p style="font-size: 2.5vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;">Tocar arquivo: {{fileName}}</p>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-offset-1 col-xs-10" style="margin-top: 1%;">
+      <p style="font-size: 1.7vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;">Digite o IP do Arduino</p>
+      <input type="text" ng-model="ip_value"></input>
+      <p style="font-size: 1.7vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;">Digite a porta do Arduino</p>
+      <input type="text" ng-model="port_value"></input>
+      <br><br>
+      <button class="btn btn-md" style="width: 240px; color: white; background-color: #1CBBB4;" ng-click="sendtoArduino()">Enviar para o Arduino</button>
+  </div>
+  <div class="row">
+    <div style="margin-top: 20%; margin-left: 10%">
+      <div class="col-xs-offset-2 col-xs-10 col-sm-offset-2 col-sm-3 left" style="padding-top: 10px;">
+        <i class="fa fa-file-o fa-5x" aria-hidden="true"></i>
+        <div style="margin-top: 10%; margin-left: -12%;">
+          <button class="btn btn-md" style="width: 150px; color: white; background-color: #1CBBB4;" ng-click="playArduino()" ng-disabled="disableButton">Play</button>
+        </div>
+      </div>
+      <div class="col-xs-offset-2 col-xs-10 col-sm-offset-1 col-sm-3" style="padding-top: 10px;">
+        <i class="fa fa-file-text-o fa-5x" aria-hidden="true"></i>
+        <div style="margin-top: 10%; margin-left: -12%;">
+          <button class="btn btn-md" style="width: 150px; color: white; background-color: #1CBBB4;" ng-click="stopArduino()" ng-disabled="disableButton2">Stop</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-offset-4 col-xs-12" style="margin-top: 10%;">
+    <audio controls>
+      <source src="{{stream_route}}" type="audio/mp3">
+    </audio>
+  </div>
+  <div class="row">
+    <div class="col-xs-offset-7 col-xs-12" style="margin-top: 8%;">
+      <button class="btn btn-lg" style="width: 240px; color: white; background-color: #1CBBB4;" ng-click="ipConfigStep()">Começar de Novo</button>
+    </div>
+  </div>
+</div>

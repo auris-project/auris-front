@@ -1,0 +1,41 @@
+@media only screen and (max-width: 350px) {
+  .pageButton {
+    margin-left: 20%;
+  }
+}
+
+@media only screen and (min-width: 350px) and (max-width: 450px) {
+  .pageButton {
+    margin-left: 25%;
+  }
+}
+
+@media only screen and (min-width: 450px) and (max-width: 560px) {
+  .pageButton {
+    margin-left: 30%;
+  }
+}
+
+@media only screen and (min-width: 560px) and (max-width: 768px) {
+  .pageButton {
+    margin-left: 35%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+   .pageButton {
+    margin-left: 35%;
+  }
+}
+@media only screen and (min-width: 959px) {
+  .pageButton {
+    margin-left: 40%;
+  }
+}
+
+@media (max-width: 767px) {
+    .navbar-nav > li > a {
+    line-height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;}
+}
