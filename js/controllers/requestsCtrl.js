@@ -76,8 +76,10 @@ angular.module("gtAD")
       headers: {'Content-Type': undefined },
       transformRequest: angular.identity
     }).success(function(results){
+      $rootScope.actualStep = 3;
       $state.go('generateStep');
     }).error(function(error){
+      $rootScope.actualStep = 3;
       $state.go('generateStep');
     });
   };
@@ -95,17 +97,17 @@ angular.module("gtAD")
   };
 
   $scope.generateAudio = function(){
-    $rootScope.actualStep = 3;
+    $rootScope.actualStep = 4;
     $state.go('generateAudio');
   }
 
   $scope.ipConfigStep = function(){
-    $rootScope.actualStep = 3;
+    $rootScope.actualStep = 5;
     $state.go('ipConfigStep');
   };
 
   $scope.audioStep = function(){
-    $rootScope.actualStep = 3;
+    $rootScope.actualStep = 5;
     $state.go('musicStep');
   };
 
@@ -131,6 +133,9 @@ angular.module("gtAD")
     $http.get($rootScope.arduinoStart_route).success(function(results){
       $scope.disableButton = true;
       $scope.disableButton2 = false;
+      var audio = document.getElementById("myAudio");
+      audio.load();
+      audio.play();
     });
   };
 
@@ -139,10 +144,16 @@ angular.module("gtAD")
     $rootScope.arduinoStop_route = path;
     $http.get($rootScope.arduinoStop_route).success(function(results){
       $scope.disableButton = false;
-      $scope.disableButton2 = true;
+      $scope.disableButton2 = false;
+      var audio = document.getElementById("myAudio");
+      audio.stop();
     });
   };
 
+  $scope.gotoHome = function(){
+    $rootScope.actualStep = 1;
+    $state.go('home');
+  };
 
   $scope.getArray = function(num) {
       return new Array(num);
