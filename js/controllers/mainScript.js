@@ -1,6 +1,7 @@
 var myVideo = document.getElementById("video1"); //Get Video Tag Element in HTML
 var myImageSlider = document.getElementById("slides"); //Get Image Tag Element in HTML
 var videoDiv = document.getElementById("videoDiv");
+var myAudio = document.getElementById("audioDiv");
 
 var indexOfLast = 0;
 
@@ -15,12 +16,20 @@ var audios = [
 ];
 
 //Array to get every topic in HTML.
-var topics = [
-	document.getElementById("topic_1"),
-	document.getElementById("topic_2"),
-	document.getElementById("topic_3"),
-	document.getElementById("topic_4"),
-	document.getElementById("topic_5")
+var videos_dropdown = [
+	document.getElementById("video_1"),
+	document.getElementById("video_2"),
+	document.getElementById("video_3"),
+	document.getElementById("video_4"),
+	document.getElementById("video_5")
+];
+
+var audios_dropdown = [
+	document.getElementById("musica_1"),
+	document.getElementById("musica_2"),
+	document.getElementById("musica_3"),
+	document.getElementById("musica_4"),
+	document.getElementById("musica_5")
 ];
 
 var i = 0; //Variable to controll TimeStamps and Slides.
