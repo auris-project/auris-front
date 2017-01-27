@@ -1,0 +1,41 @@
+<!doctype html>
+
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Presentation Syncronization</title>
+		<link rel="stylesheet" type="text/css" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+	</head>
+	<body>
+		<div class="row" id="video/presentation container">
+  			<div class="col-md-5" >
+  				<p style=" margin-top: 3%; margin-left: 5%; font-size: 2.5vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;"></p>
+				<div id="videoDiv">
+  					<video id="video1" width="800" style="margin-top: 3%; margin-left: 5%;">
+    					<source src="/api/play-video/videoplayback" type="video/mp4">
+    					Your browser does not support HTML5 video.
+  					</video>
+  				</div>
+  			</div>
+  			<div class="col-md-6">
+  			<audio id="audioDiv">
+  				<source src="/api/download-audio-filtered/musica1" type="audio/mp3">
+  			</audio>
+  			<p style=" margin-top: 3%; margin-left: 5%; font-size: 2.5vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;"></p>
+   			<p style=" margin-top: 3%; margin-left: 5%; font-size: 2.5vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;"></p>
+  			<p style=" margin-top: 3%; margin-left: 10%; font-size: 120%; color: blue; width: 100%; border: 1px; border-color: black; opacity: 0.9;">Musicas</p>
+  			<a href="#" id="topic_1" style=" margin-left: 15%; font-size: 120%; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;" onclick="goToSection(0);return false">Musica 1</a><br>
+  			<a href="#" id="topic_2" style=" margin-left: 15%; font-size: 120%; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;" onclick="goToSection(1);return false">Musica 2</a><br>
+  			<a href="#" id="topic_3" style=" margin-left: 15%; font-size: 120%; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;" onclick="goToSection(2);return false">Musica 3</a><br>
+  			<a href="#" id="topic_4" style=" margin-left: 15%; font-size: 120%; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;" onclick="goToSection(3);return false">Musica 4</a><br>
+  			<a href="#" id="topic_5" style=" margin-left: 15%; font-size: 120%; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;" onclick="goToSection(4);return false">Musica 5</a><br>
+  			</div>
+		</div>
+		<br>
+		<button type="button" class="btn btn-primary" style=" margin-left: 3%; width: 75px" onclick="playPause()">Play</button>
+		<button type="button" class="btn btn-primary" style=" width: 75px;" onclick="pauseVideo()">Pause</button>
+		<button type="button" class="btn btn-primary" style=" width: 75px;" onclick="turnDivOff()">Turn Off</button>
+		<button type="button" class="btn btn-primary" style=" width: 75px;" onclick="nextTimesStamp()">Next</button>
+		<script type="text/javascript" src="../js/controllers/mainScript.js" ></script>
+	</body>
+</html>
