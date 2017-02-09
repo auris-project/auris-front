@@ -1,7 +1,11 @@
 var myVideo = document.getElementById("video1"); //Get Video Tag Element in HTML
-var myImageSlider = document.getElementById("slides"); //Get Image Tag Element in HTML
-var videoDiv = document.getElementById("videoDiv");
 var myAudio = document.getElementById("audioDiv");
+var ip_value = document.getElementById("ip_value");
+var port_value = document.getElementById("port_value");
+var request = new XMLHttpRequest();
+var data;
+
+var music_index = 0;
 
 var indexOfLast = 0;
 
@@ -13,6 +17,22 @@ var audios = [
 	"/api/download-audio-filtered/musica3",
 	"/api/download-audio-filtered/musica4",
 	"/api/download-audio-filtered/musica5",
+];
+
+var auris_path = [
+	"/api/download-auris/musica1",
+	"/api/download-auris/musica2",
+	"/api/download-auris/musica3",
+	"/api/download-auris/musica4",
+	"/api/download-auris/musica5",
+];
+
+var videos = [
+	"/api/download-video/video1",
+	"/api/download-video/video2",
+	"/api/download-video/video3",
+	"/api/download-video/video4",
+	"/api/download-video/video5",
 ];
 
 //Array to get every topic in HTML.
@@ -32,163 +52,103 @@ var audios_dropdown = [
 	document.getElementById("musica_5")
 ];
 
-var i = 0; //Variable to controll TimeStamps and Slides.
-var k = 0; //Variable to controll Topic Elements.
-var canRun = false;
-
 var timeStamp;//Variable to handle video timestamp.
 
 //Function to update timeStamp and changeSlidesImage according to video time.
 myVideo.ontimeupdate = function() {
 	timeStamp = myVideo.currentTime; //timeStamp equals to current time of video.
 	console.log("timeStamp: ", timeStamp) //Debug only.
-	changeSlideImage(); //Call function to change slides automatically.
 }; //end of function.
 
-myVideo.onended = function() {
-	myImageSlider.style.display = 'none';
-    formDiv.style.display = 'block';
+document.addEventListener("keydown", function(e) {
+  if (e.keyCode == 13) {
+  	myVideo.pause();
+    myVideo.mozCancelFullScreen();
+  }
+}, false);
+
+function selectMusic(section){
+	music_index = section;
+	myAudio.src = audios[music_index];
+
+	var arduino_ip = "/api/arduino-post/" + ip_value.value + "/" + port_value.value + "/" + "musica" + (music_index+1);
+	console.log(arduino_ip);
+	request.open("GET", arduino_ip, false); // false for synchronous request
+    request.send(null);
+
+	/*
+	request.open("GET", "http://127.0.0.1:5500/api/download-auris/beto_brito", true);
+	request.responseType = "blob";
+	console.log("Entrei aqui");
+
+	request.onload = function(oEvent) {
+		console.log("Entrei no Onload");
+  		data = request.response;
+  		console.log(data);
+	};
+	*/
 };
 
-//
-function changeSlideImage(){
-	//console.log("Estou aqui!"); //Debug only.
-	if(timeStamp > times[i]){
-		i=i%times.length;
-		k=k%topics.length;
-		//console.log("Trocando Imagem");
-		myImageSlider.src = imagesSrc[i];
-		if(areTopic[i] == true){
-			topics[k].style.color = 'blue';
-			k++;
-		}
-		i++;
-	}
-}
+function selectVideo(section){
+	myVideo.src = videos[section];
+};
 
-function turnDivOff(){
-	if(videoDiv.style.visibility == 'hidden'){
-	//if(videoDiv.style.display == 'none'){
-		//videoDiv.style.display = 'block';
-		videoDiv.style.visibility='visible';
-	}else{
-		videoDiv.style.visibility='hidden';
-		//videoDiv.style.display = 'none';
-	}
-}
+function sendToArduino(){
 
-function submitVotacao(){
-	for (var i = 0, length = radios.length; i < length; i++) {
-    	if (radios[i].checked) {
-      	  	// do whatever you want with the checked radio
-       		console.log(radios[i].value);
-       		var path = 'http://127.0.0.1:5500/vote/' + radios[i].value;
-       		console.log(path);
-			//xhr.open('GET', path, false);
-			//xhr.send();
-       		// only one radio can be logically checked, don't check the rest
-       		//xhr.onreadystatechange = processRequest;
-       		$.ajax({
-  				type: "GET",
-  				url: path,
-  				cache: false,
-  				success: function(data){
-     				myImageSlider.style.display = 'block';
-        			formDiv.style.display = 'none';
-  				}
-			});
-        	break;
-    	}
-	}
-}
+	/*var websocket_ip = "ws://" + ip_value.value + ":" + port_value.value + "/";
+	var socket = new WebSocket(websocket_ip);
+	//var socket = io();
 
-function goToSection(section){
-	var index = 0;
-	var index2 = 0;
-	console.log("k: ", k);
-	console.log("section", section);
-	if(section < k){
-		for(number = section; number < topics.length;number++){
-			topics[number].style.color = 'gray';
-		}
-		for(number = 0; number < section+1; number++){
-			index = areTopic.indexOf(true, index2);
-			index2 = index;
-			index2 = index2 + 1;
-			console.log("My index of Last: ", index2);
-		}
-		k = section;
-	}else{
-		for(number = 0; number <= section;number++){
-			topics[number].style.color = 'blue';
-		}
-		for(number = 0; number < section+1; number++){
-			index = areTopic.indexOf(true, index2);
-			index2 = index;
-			index2 = index2 + 1;
-			console.log("My index of Last: ", index2);
-		}
-	}
-	console.log("My index of Last: ", indexOfLast);
-	console.log("My index found", index);
-	console.log("k_before: ", k);
-	console.log("section_before", section);
-	myVideo.currentTime = (times[index] + 0.5);
-	i = index;
-	indexOfLast = index+1;
-}
+	console.log("Estou aqui");
 
-function playPause() {
-    if (myVideo.paused) 
-        myVideo.play();
-    	myVideo.muted = true;
-} 
+	socket.onopen = function(){
+   		/*Send a small message to the console once the connection is established 
+   		console.log('Connection open!');
+   		socket.send("enviandio");
+	}
+
+	socket.onmessage = function(e){
+   		var server_message = e.data;
+   		console.log(server_message);
+   		if(server_message == "Recebido"){
+   			console.log("DEU CERTO!");
+   			socket.close();
+   		}
+   		else{
+   			console.log("Deu algum erro, favor verificar.")
+   		}
+	}
+	*/
+};
+
+function playPause(){
+    if (myVideo.paused){
+    	var arduino_ip = "/api/start/" + ip_value.value + "/" + port_value.value + "/" + "musica" + (music_index+1);
+		console.log(arduino_ip);
+		request.open("GET", arduino_ip, false); // false for synchronous request
+    	request.send(null);
+
+    	request.onreadystatechange = function() {
+    		if (this.readyState == 4 && this.status == 200) {
+       			myVideo.play();
+    			myVideo.muted = true;
+    			myVideo.mozRequestFullScreen();
+    			myAudio.play();
+    		}
+		};
+    }
+};
 
 function pauseVideo(){
-	myVideo.pause(); 
-}
+	var arduino_ip = "/api/start/" + ip_value.value + "/" + port_value.value + "/" + "musica" + (music_index+1);
+	console.log(arduino_ip);
+	request.open("GET", arduino_ip, false); // false for synchronous request
+    request.send(null);
 
-function nextTimesStamp(){
-	i=i%times.length;
-	k=k%topics.length;
-	if (i == 0){
-		myVideo.currentTime = times[i];
-		timeStamp = times[i];
-		k = 0;
-		if(areTopic[0] == true){
-			indexOfLast = 1;
-		}else{
-			indexOfLast = 0;
-		}
-		for (j=0;j<topics.length;j++){
-			topics[j].style.color = 'gray';
-			if(areTopic[i] == true && canRun == false){
-				topics[k].style.color = 'blue';
-				k++;
-				console.log(k);
-			}
-			canRun = true;
-		}
-	}
-	while(timeStamp > times[i]){
-		if(timeStamp > times[times.length]){
-			myVideo.currentTime = times[0];
-			timeStamp = times[0];
-			k = 0;
-		}
-		i++;
-		i=i%times.length;
-	}
-	///console.log("k in my nextstamp", k);
-	//console.log("Can Run :", canRun);
-	//console.log("Are it topic? :", areTopic[i])
-	if(areTopic[i] == true && canRun == false){
-		topics[k].style.color = 'blue';
-		k++;
-	}
-	//console.log(times[i])
-	myVideo.currentTime = times[i];
-	myImageSlider.src = imagesSrc[i];
-	canRun = false;
-	i++;
-}
+    request.onreadystatechange = function() {
+    	if (this.readyState == 4 && this.status == 200) {
+       		myVideo.pause(); 
+			myAudio.pause();
+    	}
+	};
+};

@@ -18,9 +18,9 @@
   			</div>
   			<div class="col-md-1">
   			<audio id="audioDiv">
-  				<source src="" type="audio/mp3">
+  				<source src="/api/download-audio-filtered/Musica_teste" type="audio/mp3">
   			</audio>
-        <div class="dropdown" style=" margin-top: 40%; margin-left: 10%; font-size: 120%; width: 10%; border: 1px; border-color: black; opacity: 0.9;">
+        <div class="dropdown" style=" margin-top: 40%; font-size: 120%; width: 10%; border: 1px; border-color: black; opacity: 0.9;">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Videos 
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
@@ -30,28 +30,38 @@
            <li><a href="#" id="video_4" onclick="goToSection(3);return false">Video 4</a></li>
            <li><a href="#" id="video_5" onclick="goToSection(4);return false">Video 5</a></li>
           </ul>
-         </div>
+        </div>
       </div>
       <div class="col-md-1">
-        <div class="dropdown" style=" margin-top: 40%; margin-left: 10%; font-size: 120%; width: 10%; border: 1px; border-color: black; opacity: 0.9;">
+        <div class="dropdown" style=" margin-top: 40%; font-size: 120%; width: 10%; border: 1px; border-color: black; opacity: 0.9;">
           <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Musicas 
           <span class="caret"></span></button>
           <ul class="dropdown-menu">
-           <li><a href="#" id="musica_1" onclick="goToSection(0);return false">Musica 1</a></li>
-           <li><a href="#" id="musica_2" onclick="goToSection(1);return false">Musica 2</a></li>
-           <li><a href="#" id="musica_3" onclick="goToSection(2);return false">Musica 3</a></li>
-           <li><a href="#" id="musica_4" onclick="goToSection(3);return false">Musica 4</a></li>
-           <li><a href="#" id="musica_5" onclick="goToSection(4);return false">Musica 5</a></li>
+           <li><a href="#" id="musica_1" onclick="selectMusic(0);return false">Musica 1</a></li>
+           <li><a href="#" id="musica_2" onclick="selectMusic(1);return false">Musica 2</a></li>
+           <li><a href="#" id="musica_3" onclick="selectMusic(2);return false">Musica 3</a></li>
+           <li><a href="#" id="musica_4" onclick="selectMusic(3);return false">Musica 4</a></li>
+           <li><a href="#" id="musica_5" onclick="selectMusic(4);return false">Musica 5</a></li>
           </ul>
          </div>
+      </div>
+      <div class="col-md-2" style="padding-top: 30px;">
+        <p style="font-size: 1.7vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;">Digite o IP do Arduino</p>
+        <input type="text" id="ip_value"></input>
+        <p style="font-size: 1.7vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;">Digite a porta do Arduino</p>
+        <input type="text" id="port_value"></input>
+        <br><br>
+        <button class="btn btn-md" style="width: 165px; color: white; background-color: #1CBBB4;" onclick="sendToArduino()">Enviar para o Arduino</button>
       </div>
 		</div>
 
 		<br>
 		<button type="button" class="btn btn-primary" style=" margin-left: 3%; width: 75px" onclick="playPause()">Play</button>
 		<button type="button" class="btn btn-primary" style=" width: 75px;" onclick="pauseVideo()">Pause</button>
-		<button type="button" class="btn btn-primary" style=" width: 75px;" onclick="turnDivOff()">Turn Off</button>
-		<button type="button" class="btn btn-primary" style=" width: 75px;" onclick="nextTimesStamp()">Next</button>
-    <script type="text/javascript" src="js/controllers/mainScript.js" ></script>
+		<button type="button" class="btn btn-primary" style=" width: 75px;" onclick="">Turn Off</button>
+		<button type="button" class="btn btn-primary" style=" width: 75px;" onclick="">Next</button>
+    <button type="button" class="btn btn-primary" style=" width: 75px;" onclick="sendToArduino()">Send</button>
+    <script type="text/javascript" src="../js/controllers/mainScript.js" ></script>
+    <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
 	</body>
 </html>
