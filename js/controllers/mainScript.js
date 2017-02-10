@@ -2,8 +2,12 @@ var myVideo = document.getElementById("video1"); //Get Video Tag Element in HTML
 var myAudio = document.getElementById("audioDiv");
 var ip_value = document.getElementById("ip_value");
 var port_value = document.getElementById("port_value");
+var playButton = document.getElementById("playButton");
+var pauseButton = document.getElementById("pauseButton");
 var request = new XMLHttpRequest();
 var data;
+
+var flag = true;
 
 var music_index = 0;
 
@@ -122,33 +126,41 @@ function sendToArduino(){
 };
 
 function playPause(){
-    if (myVideo.paused){
-    	var arduino_ip = "/api/start/" + ip_value.value + "/" + port_value.value + "/" + "musica" + (music_index+1);
-		console.log(arduino_ip);
-		request.open("GET", arduino_ip, false); // false for synchronous request
-    	request.send(null);
-
-    	request.onreadystatechange = function() {
-    		if (this.readyState == 4 && this.status == 200) {
-       			myVideo.play();
-    			myVideo.muted = true;
-    			myVideo.mozRequestFullScreen();
-    			myAudio.play();
-    		}
-		};
-    }
+    var arduino_ip = "/api/start/" + ip_value.value + "/" + port_value.value;
+	console.log(arduino_ip);
+	flag = false;
+	request.open("GET", arduino_ip, false); // false for synchronous request
+    request.send(null); 
 };
 
 function pauseVideo(){
-	var arduino_ip = "/api/start/" + ip_value.value + "/" + port_value.value + "/" + "musica" + (music_index+1);
+	var arduino_ip = "/api/stop/" + ip_value.value + "/" + port_value.value;
 	console.log(arduino_ip);
+	flag = false;
 	request.open("GET", arduino_ip, false); // false for synchronous request
     request.send(null);
+};
 
-    request.onreadystatechange = function() {
-    	if (this.readyState == 4 && this.status == 200) {
-       		myVideo.pause(); 
+request.onreadystatechange = function() {
+	if (this.readyState == 4 && this.status == 200) {
+		if (flag == true){
+			playButton.disabled = false;
+		}
+		else if(myVideo.paused && flag == false){
+			myVideo.play();
+			myVideo.muted = true;
+			myVideo.mozRequestFullScreen();
+			myAudio.play();
+			playButton.disabled = true;
+			pauseButton.disabled = false;
+			flag = true;
+		}
+		else{
+			myVideo.pause(); 
 			myAudio.pause();
-    	}
-	};
+			playButton.disabled = false;
+			pauseButton.disabled = true;
+			flag = true;
+		}
+	}
 };
