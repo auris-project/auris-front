@@ -8,9 +8,10 @@
   <style>
     body {
       background-image: url("../img/videoframe.jpg");
-      background-repeat: repeat-x;
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
       background-attachment: fixed;
-      background-position: 30% 150%;
+      margin-top: 200px;
     }
     .videoInsert { 
       right: 0; 
@@ -19,9 +20,12 @@
       min-height: 85%;
       width: auto; 
       height: auto; 
-      z-index: -100;
+      z-index: 1;
       background-size: cover;
       overflow: hidden;
+    }
+    #AurisLogo{
+      padding-left: 50%;
     }
   </style>
 	<body>
@@ -38,31 +42,37 @@
           <input type="text" id="port_value"></input>
         </div>
 
-        <div class="dropdown" style=" margin-left: 50%; margin-top: 10%; font-size: 120%; width: 10%; border: 1px; border-color: black; opacity: 0.9;">
-          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Videos 
-          <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-           <li><a href="#" id="video_1" onclick="goToSection(0);return false">Video 1</a></li>
-           <li><a href="#" id="video_2" onclick="goToSection(1);return false">Video 2</a></li>
-           <li><a href="#" id="video_3" onclick="goToSection(2);return false">Video 3</a></li>
-           <li><a href="#" id="video_4" onclick="goToSection(3);return false">Video 4</a></li>
-           <li><a href="#" id="video_5" onclick="goToSection(4);return false">Video 5</a></li6
-          </ul>
-        </div>
+        <div id="divButtons" class="col-md-5" style="margin-left: 30%">
+          <div id="divButtonVideo" class="col-md-6" style="margin-top: 9%">
+            <div class="dropdown" style="font-size: 120%; width: 10%; border: 1px; border-color: black; opacity: 0.9;">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Videos 
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+               <li><a href="#" id="video_1" onclick="goToSection(0);return false">Video 1</a></li>
+               <li><a href="#" id="video_2" onclick="goToSection(1);return false">Video 2</a></li>
+               <li><a href="#" id="video_3" onclick="goToSection(2);return false">Video 3</a></li>
+               <li><a href="#" id="video_4" onclick="goToSection(3);return false">Video 4</a></li>
+               <li><a href="#" id="video_5" onclick="goToSection(4);return false">Video 5</a></li>
+              </ul>
+            </div>
+          </div>
 
-        <div class="dropdown" style="margin-left: 35%; margin-top: -4.5%; font-size: 120%; width: 10%; border: 1px; border-color: black; opacity: 0.9;">
-          <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Musicas 
-          <span class="caret"></span></button>
-          <ul class="dropdown-menu">
-           <li><a href="#" id="musica_1" onclick="selectMusic(0);return false">Musica 1</a></li>
-           <li><a href="#" id="musica_2" onclick="selectMusic(1);return false">Musica 2</a></li>
-           <li><a href="#" id="musica_3" onclick="selectMusic(2);return false">Musica 3</a></li>
-           <li><a href="#" id="musica_4" onclick="selectMusic(3);return false">Musica 4</a></li>
-           <li><a href="#" id="musica_5" onclick="selectMusic(4);return false">Musica 5</a></li>
-          </ul>
+          <div id="divButtonMusic" class="col-md-1" style="margin-top: 9%">
+            <div class="dropdown" style="font-size: 120%; width: 10%; border: 1px; border-color: black; opacity: 0.9;">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Musicas 
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu">
+               <li><a href="#" id="musica_1" onclick="selectMusic(0);return false">Musica 1</a></li>
+               <li><a href="#" id="musica_2" onclick="selectMusic(1);return false">Musica 2</a></li>
+               <li><a href="#" id="musica_3" onclick="selectMusic(2);return false">Musica 3</a></li>
+               <li><a href="#" id="musica_4" onclick="selectMusic(3);return false">Musica 4</a></li>
+               <li><a href="#" id="musica_5" onclick="selectMusic(4);return false">Musica 5</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
-      
+
       <div class="col-md-6" >
         <p style=" margin-top: 7%; font-size: 2.5vmin; color: #B2B2B2; width: 100%; border: 1px; border-color: black; opacity: 0.9;"></p>
         <div id="videoDiv">
