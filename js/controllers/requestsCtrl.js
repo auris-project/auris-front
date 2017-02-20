@@ -99,7 +99,7 @@ angular.module("gtAD")
   $scope.generateAudio = function(){
     $rootScope.actualStep = 4;
     $state.go('generateAudio');
-  }
+  };
 
   $scope.ipConfigStep = function(){
     $rootScope.actualStep = 5;
@@ -109,6 +109,10 @@ angular.module("gtAD")
   $scope.audioStep = function(){
     $rootScope.actualStep = 5;
     $state.go('musicStep');
+  };
+
+  $scope.testPage = function(){
+    $state.go('testPage');
   };
 
   $scope.sendtoArduino = function(){

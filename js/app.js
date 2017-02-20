@@ -32,6 +32,10 @@ angular.module('gtAD', ['ui.router', 'ui.bootstrap', 'toastr', 'angular-loading-
   .state('generateAudio', {
     url: '/filteredaudio_step',
     templateUrl: 'templates/generateAudioStep.html'
+  })
+  .state('testPage', {
+    url: '/testpage',
+    templateUrl: 'templates/testScreen.html'
   });
 
   $urlRouterProvider.otherwise('/home');
